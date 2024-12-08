@@ -1,0 +1,65 @@
+ID: cap_docker
+_schema-version: 3.3.0
+version: 0.0.0
+
+modules:
+  - name: cap_docker-db-deployer
+    type: hdb
+    path: db
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build
+    requires:
+      - name: cap_docker-db
+  - name: my-mta-managed-app
+    type: application
+    parameters:
+      docker:
+        image: rui77777/docker-cf-cap-poc # repo/image:tag
+        # username: <optional username> # credentials to access docker repo
+        # password: <optional password>
+      instances: 1
+      routes:
+        - route: ${org}-${space}-${app-name}.${domain}
+    properties:
+      MY_ENV_VAR: "value-of-my-env-var"
+    build-parameters:
+      no-source: true
+    requires:
+      - name: cap_docker-db
+      - name: cap_docker-auth
+      - name: cap_docker-destination
+resources:
+  - name: cap_docker-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: cap_docker-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: cap_docker_auth_name
+        tenant-mode: dedicated
+  - name: cap_docker-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        init_data:
+          instance:
+            destinations:
+              - Name: odata-v4-destination
+                Description: "Destination used to fetch data from public odata api"
+                Authentication: NoAuthentication
+                URL: https://services.odata.org
+                ProxyType: Internet
+                Type: HTTP
+            existing_destinations_policy: update
