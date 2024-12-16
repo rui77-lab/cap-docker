@@ -40,10 +40,14 @@ jobs:
       with:
         # Disabling shallow clones is recommended for improving the relevancy of reporting
         fetch-depth: 0
-    - name: Download math result for job 2
+    - name: Download Java Server Folder
       uses: actions/download-artifact@v4
       with:
         name: java_srv
+    - name: Print directory
+      shell: bash
+      run: |
+          ls
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v4.1.0
       env:
