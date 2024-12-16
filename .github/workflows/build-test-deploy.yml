@@ -28,6 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean package
   sonarqube:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
