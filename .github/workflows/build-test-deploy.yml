@@ -27,11 +27,16 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean package
-    - name: Upload math result for job 1
+    - name: Upload SVR
       uses: actions/upload-artifact@v4
       with:
         name: java_srv
         path: srv
+    - name: Upload DB
+      uses: actions/upload-artifact@v4
+      with:
+        name: db
+        path: db
   sonarqube:
     needs: build
     runs-on: ubuntu-latest
@@ -84,6 +89,11 @@ jobs:
     needs: build-and-push-image
     steps:
       - uses: actions/checkout@v4
+      - name: Download Java Server Folder
+        uses: actions/download-artifact@v4
+        with:
+          name: db
+          path: db
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
