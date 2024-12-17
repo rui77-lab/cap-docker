@@ -2,7 +2,7 @@
 set -e
 
 echo '############## Replace Variable on MTA.yaml #########'
-envsubst < mta.yml
+envsubst < ../mta.yml
 
 
 cat mta.yaml
