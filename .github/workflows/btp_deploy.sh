@@ -15,6 +15,12 @@ cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
 cf install-plugin multiapps -f
 cf install-plugin html5-plugin -f
 
+echo '########## Node Version ##########'
+node -v
+
+echo '########## NPM Version ##########'
+npm -v
+
 echo '############## Build ##############'
 npx mbt build --mtar app.mtar
 
