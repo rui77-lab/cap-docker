@@ -96,7 +96,7 @@ jobs:
           path: db
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - name: Make the script files executable
         run: chmod +x ./.github/workflows/btp_deploy.sh
       - name: Run the deploy script
