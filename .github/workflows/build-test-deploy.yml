@@ -96,5 +96,5 @@ jobs:
           cf_api_url: ${{vars.CF_API_URL}}
           cf_org: ${{vars.CF_ORG}}
           cf_space: ${{vars.CF_SPACE}}
-        run: ./.github/workflows/scripts/btp_deploy.sh
+        run: ./.github/workflows/btp_deploy.sh
         
