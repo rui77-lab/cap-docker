@@ -4,6 +4,9 @@ set -e
 echo '############## Replace Variable on MTA.yaml #########'
 envsubst < mta.yml
 
+
+cat mta.yaml
+
 echo '############## Get cf Client ##############'
 wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
 echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
