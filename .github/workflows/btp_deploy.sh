@@ -18,11 +18,15 @@ cf install-plugin html5-plugin -f
 echo '########## Node Version ##########'
 node -v
 
+echo '############## Print directory ##############' 
+ls
+
 echo '########## NPM Version ##########'
 npm -v
 
 echo '############## Build ##############'
 npx mbt build --mtar app.mtar
+
 
 echo '############## Authorizations ##############'
 cf api $cf_api_url
