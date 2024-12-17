@@ -18,9 +18,9 @@ modules:
     type: application
     parameters:
       docker:
-        image: rui77777/docker-cf-cap-poc # repo/image:tag
-        # username: <optional username> # credentials to access docker repo
-        # password: <optional password>
+        image: ghcr.io/rui77-lab/cap-docker:latest
+        username: ${github.actor}
+        password: ${secrets.GITHUB_TOKEN}
       instances: 1
       routes:
         - route: ${org}-${space}-${app-name}.${domain}

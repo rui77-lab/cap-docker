@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo '############## Replace Variable on MTA.yaml #########'
+envsubst < mta.yml
+
 echo '############## Get cf Client ##############'
 wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
 echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
@@ -17,7 +20,7 @@ cf install-plugin html5-plugin -f
 
 echo '########## Node Version ##########'
 node -v
-
+envsubst 
 echo '############## Print directory ##############'
 ls
 
