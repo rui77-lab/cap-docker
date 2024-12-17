@@ -2,10 +2,10 @@
 set -e
 
 echo '############## Replace Variable on MTA.yaml #########'
-envsubst < ../mta.yml
+envsubst < ../../mta.yml
 
 
-cat mta.yaml
+cat ../../mta.yml
 
 echo '############## Get cf Client ##############'
 wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
