@@ -88,7 +88,7 @@ jobs:
         with:
           node-version: '20'
       - name: Make the script files executable
-        run: chmod +x ./.github/workflows/scripts/btp_deploy.sh
+        run: chmod +x ./.github/workflows/btp_deploy.sh
       - name: Run the deploy script
         env:
           cf_user: ${{ secrets.CF_USER }}
