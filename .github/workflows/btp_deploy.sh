@@ -18,12 +18,12 @@ cf install-plugin html5-plugin -f
 echo '########## Node Version ##########'
 node -v
 
-echo '############## Print directory ##############' 
+echo '############## Print directory ##############'
 ls
 
 echo '########## NPM Version ##########'
 npm -v
-
+npm i @sap/cds-dk@latest
 echo '############## Build ##############'
 npx mbt build --mtar app.mtar
 
