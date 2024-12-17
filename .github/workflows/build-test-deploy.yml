@@ -55,6 +55,7 @@ jobs:
         SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
   build-and-push-image:
     needs: build
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
