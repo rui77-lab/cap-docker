@@ -106,5 +106,7 @@ jobs:
           cf_api_url: ${{vars.CF_API_URL}}
           cf_org: ${{vars.CF_ORG}}
           cf_space: ${{vars.CF_SPACE}}
+          docker_user: ${{ github.actor }}
+          docker_token: ${{ secrets.GITHUB_TOKEN }}
         run: ./.github/workflows/btp_deploy.sh
         

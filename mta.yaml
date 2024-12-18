@@ -19,8 +19,8 @@ modules:
     parameters:
       docker:
         image: ghcr.io/rui77-lab/cap-docker:latest
-        username: ${github.actor}
-        password: ${secrets.GITHUB_TOKEN}
+        username: ${docker_user}
+        password: ${docker_token}
       instances: 1
       routes:
         - route: ${org}-${space}-${app-name}.${domain}
