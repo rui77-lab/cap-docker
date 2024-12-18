@@ -12,7 +12,9 @@ sudo apt-get install moreutils
 
 
 echo '############## Replace Variable on MTA.yaml #########'
-envsubst < mta.yaml | sponge mta.yaml
+envsubst \${docker_user}, \${docker_token} < mta.yaml | sponge mta.yaml
+
+cat mta.yaml
 
 echo '############## Check Installation ##############'
 cf -v
